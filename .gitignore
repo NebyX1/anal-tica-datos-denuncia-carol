@@ -1,0 +1,15 @@
+venv/
+*.pyc
+__pycache__/
+.env
+user_data/
+
+# Resultados y Data
+*.csv
+*.png
+!example.csv
+
+# Herramientas temporales
+fix_csv_delimiter.py
+fix_csv_one.py
+test_sentiment.py
