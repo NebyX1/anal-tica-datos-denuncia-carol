@@ -8,6 +8,10 @@ user_data/
 *.csv
 *.png
 !example.csv
+!Analítica_Datos_Daniel_Carol.csv
+!apoyo_pie_charts.png
+!nube_analitica_carol.png
+!resultados_cuantitativos.png
 
 # Herramientas temporales
 fix_csv_delimiter.py
