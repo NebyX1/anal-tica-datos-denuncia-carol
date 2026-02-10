@@ -73,9 +73,10 @@ Los resultados se consolidarán en el archivo de analítica final (ej. `Analíti
 3.  **Análisis de Tópicos**:
     Clasifica los comentarios en categorías temáticas específicas:
     ```powershell
-    python classify_topics.py --input Analítica_Datos_Daniel_Carol.csv --output Analítica_Datos_Daniel_Carol_Topics.csv
+    python classify_topics.py
     ```
-    *   **Tópicos**: Vocación Médica, Legalidad, Rechazo a la Denuncia, Identidad Uruguaya/Precedentes.
+    *   **Tópicos**: Vocación Médica y Humanidad, Legalidad y Compatibilidad Funcional, Rechazo a la denuncia, Crítica Política y Valores Políticos, No identificado.
+    *   **Salida**: Guarda los resultados por defecto en `Topics_Clean.csv`.
     *   **Optimización**: El script usa caché local (`topics_cache.json`) y checkpoints cada 10 comentarios.
 
 ---
@@ -106,8 +107,10 @@ Una vez que los datos están etiquetados, puedes generar los informes visuales:
 4.  **Distribución de Tópicos (Donut Chart)**:
     Genera una visualización moderna de la distribución temática:
     ```powershell
-    python plot_topics_distribution.py --input Topics_Clean.csv --output topics_distribution_final.png --title "Análisis de Tópicos"
-    ```    *   **Diseño**: Genera un gráfico de dona con una paleta de colores de alto contraste y leyenda con totales ($n=x$).
+    python plot_topics_distribution.py
+    ```
+    *   **Salida**: Genera `topics_distribution_final.png` leyendo de `Topics_Clean.csv`.
+    *   **Diseño**: Gráfico de dona con paleta de colores de alto contraste y leyenda con totales ($n=x$).
     *   **Soporte**: Detecta automáticamente delimitadores (`,` o `;`) y nombres de columnas (`Topic` o `Topics`).
 ---
 
