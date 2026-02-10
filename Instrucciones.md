@@ -70,9 +70,17 @@ Este paso requiere que Ollama esté activo y el modelo cargado.
 
 Los resultados se consolidarán en el archivo de analítica final (ej. `Analítica_Datos_Daniel_Carol.csv`).
 
+3.  **Análisis de Tópicos**:
+    Clasifica los comentarios en categorías temáticas específicas:
+    ```powershell
+    python classify_topics.py --input Analítica_Datos_Daniel_Carol.csv --output Analítica_Datos_Daniel_Carol_Topics.csv
+    ```
+    *   **Tópicos**: Vocación Médica, Legalidad, Rechazo a la Denuncia, Identidad Uruguaya/Precedentes.
+    *   **Optimización**: El script usa caché local (`topics_cache.json`) y checkpoints cada 10 comentarios.
+
 ---
 
-## 5. Paso 4: Visualización
+## 5. Paso 4: Visualización e Informes
 
 Una vez que los datos están etiquetados, puedes generar los informes visuales:
 
@@ -81,16 +89,47 @@ Una vez que los datos están etiquetados, puedes generar los informes visuales:
     python wordcloud_gen.py
     ```
     Genera una imagen con los términos más frecuentes.
-    *Advertencia: Este script no contempla la limpieza de nombres de usuarios mencionados en respuestas (etiquetas). Si los comentarios incluyen menciones tipo "Juan Perez", estos nombres aparecerán en la nube. Esa limpieza se realizó previamente con un script externo no incluido en este paquete.*
 
-2.  **Gráficos de Torta**:
+2.  **Gráficos de Torta (Sentimiento)**:
     ```powershell
     python plot_apoyo_pies.py
     ```
     Crea un archivo `apoyo_pie_charts.png` con la distribución de posturas para ambos protagonistas.
+
+3.  **Tabla de Resultados Cuantitativos**:
+    Genera un informe rápido por consola y una imagen profesional con los totales y porcentajes:
+    ```powershell
+    python create_summary_table.py
+    ```
+    *   **Salida**: `resultados_cuantitativos.png`.
+
+4.  **Distribución de Tópicos (Donut Chart)**:
+    Genera una visualización moderna de la distribución temática:
+    ```powershell
+    python plot_topics_distribution.py --input Topics_Clean.csv --output topics_distribution_final.png --title "Análisis de Tópicos"
+    ```
+
+---
+
+## 6. Utilidades Adicionales
+
+### Corrección de Delimitadores
+Si tu archivo CSV no se visualiza correctamente en Excel (columnas juntas), usa este script para convertir separadores (`,`, `;`):
+```powershell
+python fix_csv_delimiter.py
+```
+*Edita el script para definir el archivo de entrada deseado.*
+
+### Sorteo Aleatorio
+Para generar muestras representativas (ej. 200 casos):
+```powershell
+python sorteo_casos.py
+```
+*Genera `Casos_Sorteados.csv` a partir de la analítica principal.*
 
 ---
 
 ## Notas Importantes
 *   **Configuración**: Puedes ajustar los modelos, rutas de archivos y nombres de columnas en el archivo `.env` (basándote en `example.env`).
 *   **Limpieza de Texto**: La precisión del análisis de sentimientos y la nube de palabras depende de la calidad del texto. Asegúrate de que el CSV de entrada tenga las columnas correctamente nombradas en el archivo de configuración.
+*   **Compatibilidad Regional**: Los archivos generados como `Topics_Clean.csv` están optimizados con punto y coma (`;`) para su correcta apertura en sistemas hispanohablantes.
