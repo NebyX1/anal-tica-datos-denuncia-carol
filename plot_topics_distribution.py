@@ -107,8 +107,8 @@ def plot_distribution(counts: pd.Series, title: str, output_path: str, other_thr
 def main():
     parser = argparse.ArgumentParser(description='Genera la distribución de tópicos desde un CSV')
     parser.add_argument('--input', default='Topics_Clean.csv', help='CSV de entrada que contiene la columna Topic')
-    parser.add_argument('--output', default='topics_distribution_v2.png', help='Ruta de la imagen de salida')
-    parser.add_argument('--title', default='Análisis de Tópicos - Reporte Final', help='Título del gráfico')
+    parser.add_argument('--output', default='topics_distribution_final.png', help='Ruta de la imagen de salida')
+    parser.add_argument('--title', default='Análisis de Tópicos', help='Título del gráfico')
     parser.add_argument('--other_threshold', type=float, default=0.0, help='Umbral (0-1) para agrupar categorías pequeñas')
 
     args = parser.parse_args()
