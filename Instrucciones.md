@@ -107,8 +107,8 @@ Una vez que los datos están etiquetados, puedes generar los informes visuales:
     Genera una visualización moderna de la distribución temática:
     ```powershell
     python plot_topics_distribution.py --input Topics_Clean.csv --output topics_distribution_final.png --title "Análisis de Tópicos"
-    ```
-
+    ```    *   **Diseño**: Genera un gráfico de dona con una paleta de colores de alto contraste y leyenda con totales ($n=x$).
+    *   **Soporte**: Detecta automáticamente delimitadores (`,` o `;`) y nombres de columnas (`Topic` o `Topics`).
 ---
 
 ## 6. Utilidades Adicionales
